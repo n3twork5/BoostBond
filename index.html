@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Content Security Policy relaxed for file:// compatibility -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ko-fi.com https://github.com https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://api.ko-fi.com https://cdn.jsdelivr.net; frame-src https://ko-fi.com https://github.com;">
+    <meta name="description" content="n3twork Donation and Tip Services - Secure platform for donations and tips supporting various tools and services">
+    <meta name="keywords" content="donations, tips, tools, services, secure, n3twork">
+    <meta name="author" content="n3twork(Obed Prince Kofi Yesu) - Computer Hacker & Programmer">
+    <title>CodeSupport Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/donation.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <img src="images/profile1.jpg" alt="n3twork Profile" class="profile-image" tabindex="0" title="Click to shuffle profile picture">
+                    <div class="brand-text">
+                        <h1>n3twork Donation & Tip Services</h1>
+                        <span class="tagline">Supporting Tools & Innovation</span>
+                    </div>
+                </div>
+                <div class="navbar-menu">
+                    <a href="#donate" class="nav-link">Donate</a>
+                    <a href="#tools" class="nav-link">Tools in Need</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Support Innovation & Essential Tools</h2>
+                <p>Your donations help fund critical tools, software development, and technology services that benefit the community.</p>
+                <div class="hero-actions">
+                    <a href="#donate" class="btn btn-primary">Make a Donation</a>
+                    <a href="#tools" class="btn btn-secondary">View Tools in Need</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="donation-stats" onclick="viewStats()" title="Click to view detailed statistics">
+                    <div class="stat">
+                        <span class="stat-number">$0</span>
+                        <span class="stat-label">Raised This Month</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Tools Supported</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Contributors</span>
+                    </div>
+                    <p class="stats-hint">📊 Click for details</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="section donate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Donation Method</h2>
+                <p>Support our mission through various secure donation platforms</p>
+            </div>
+            <div class="donation-grid">
+                <!-- Ko-fi Integration -->
+                <div class="donation-card">
+                    <div class="donation-icon">☕</div>
+                    <h3>Ko-fi</h3>
+                    <p>Buy us a coffee and support our work directly</p>
+                    <div class="kofi-button-container" id="kofiContainer">
+                        <!-- Ko-fi button will be inserted here -->
+                        <a href="https://ko-fi.com/n3twork" class="btn btn-kofi">
+                            Support via Ko-fi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GitHub Sponsors -->
+                <div class="donation-card">
+                    <div class="donation-icon">⭐</div>
+                    <h3>GitHub Sponsors</h3>
+                    <p>Sponsor our open-source projects and development</p>
+                    <a href="https://github.com/sponsors/n3twork5" class="btn btn-github">
+                        Sponsor on GitHub
+                    </a>
+                </div>
+
+                <!-- Crypto Donations -->
+                <div class="donation-card">
+                    <div class="donation-icon crypto-icons-group">
+                        <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/svg/color/btc.svg" alt="Bitcoin" class="crypto-main-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/svg/color/eth.svg" alt="Ethereum" class="crypto-main-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/svg/color/bnb.svg" alt="Binance" class="crypto-main-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/svg/color/ltc.svg" alt="Litecoin" class="crypto-main-icon">
+                    </div>
+                    <h3>Cryptocurrency</h3>
+                    <p>Support with Bitcoin, Ethereum, Binance, Litecoin and other cryptocurrencies</p>
+                    <button class="btn btn-crypto" onclick="showCryptoModal()">
+                        View Crypto Addresses
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools in Need Section -->
+    <section id="tools" class="section tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tools & Services in Need</h2>
+                <p>These are the tools and services that need your support</p>
+            </div>
+            <div class="tools-grid" id="toolsGrid">
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/ubertoothone.jpg" alt="Ubertooth One" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>Ubertooth One</h3>
+                        <p>Bluetooth Low Energy (BLE) development and research platform for wireless security testing.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Security</span>
+                            <span class="tool-urgency medium">Medium Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $133</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('ubertooth')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('ubertooth')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/OBD-II.jpg" alt="OBD-II Scanner" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>OBD-II Port Connector</h3>
+                        <p>Automotive diagnostic tool for vehicle security research and CAN bus analysis.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Automotive</span>
+                            <span class="tool-urgency medium">Medium Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $20</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('obdii')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('obdii')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/WiredOBD-II.jpg" alt="OBD-II Scanner" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>ELM327 OBD2 USB Adapter</h3>
+                        <p>Automotive diagnostic tool for vehicle security research and CAN bus analysis.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Automotive</span>
+                            <span class="tool-urgency high">High Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $25</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('obdii')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('obdii')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/alpha.jpg" alt="WiFi Alpha Adapter" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>WiFi Alpha Adapter</h3>
+                        <p>High-gain USB WiFi adapter for wireless penetration testing and security research.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Networking</span>
+                            <span class="tool-urgency high">High Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $60</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('alpha')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('alpha')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/rf-generators.jpg" alt="RF Signal Generator" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>RF Signal Generator</h3>
+                        <p>Professional RF signal generator for testing and development of wireless communication systems.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Testing</span>
+                            <span class="tool-urgency critical">Critical Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $40</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('rfgen')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('rfgen')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/hackrf-pro-preliminary-photo.jpg" alt="HackRF Pro" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>HackRF Pro</h3>
+                        <p>Advanced Software Defined Radio platform with enhanced features for professional RF analysis and research applications.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Security Pro</span>
+                            <span class="tool-urgency critical">Critical Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 5%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $400</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('hackrfpro')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('hackrfpro')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/rtl-sdr.jpg" alt="RTL-SDR" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>RTL-SDR</h3>
+                        <p>Affordable Software Defined Radio dongle perfect for learning RF analysis and signal monitoring for beginners.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Learning</span>
+                            <span class="tool-urgency medium">Medium Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $40</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('rtlsdr')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('rtlsdr')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="images/tools/WiFiPineapple-Hak5.png" alt="WiFi Pineapple" loading="lazy">
+                    </div>
+                    <div class="tool-content">
+                        <h3>WiFi Pineapple</h3>
+                        <p>Professional wireless auditing platform by Hak5 for advanced WiFi penetration testing and network reconnaissance.</p>
+                        <div class="tool-meta">
+                            <span class="tool-category">Professional</span>
+                            <span class="tool-urgency critical">Critical Priority</span>
+                        </div>
+                        <div class="tool-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 10%"></div>
+                            </div>
+                            <span class="progress-text">Goal = $260</span>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showToolDetails('pineapple')">View Details</button>
+                            <button class="btn btn-primary btn-sm" onclick="showPaymentOptions('pineapple')">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About n3twork Donation Services</h2>
+                    <p>I am dedicated to supporting the development and maintenance of essential tools and services that benefit the technology community. Our platform provides a secure and transparent way for supporters to contribute to projects that matter.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <div class="feature-content">
+                                <h3>Secure Donations</h3>
+                                <p>All donations are processed through secure, trusted platforms with full encryption and fraud protection.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h3>Transparent Usage</h3>
+                                <p>Track how your donations are being used with regular updates and transparent reporting.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🛠️</div>
+                            <div class="feature-content">
+                                <h3>Tool Support</h3>
+                                <p>Support a wide range of development tools, services, and community projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-profile">
+                        <img src="images/profile1.jpg" alt="n3twork - Obed Prince Kofi Yesu" class="about-profile-image" tabindex="0" title="Click to shuffle profile picture">
+                        <div class="about-profile-info">
+                            <h3>Obed Prince Kofi Yesu</h3>
+                            <p class="about-role">🕵🏻 Gray Hat Hacker & Programmer</p>
+                            <p class="about-description">Passionate about cybersecurity, tool development, and supporting the technology community through innovative solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Have questions or suggestions? I'd love to hear from you.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p><a href="mailto:networkmandaean@gmail.com">networkmandaean@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Response Time</h3>
+                        <p>You can expect a response within 24 hours.</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/n3twork5" target="" aria-label="GitHub">GitHub</a>
+                            <a href="https://www.youtube.com/@y3suh4xn3twork" target="" aria-label="YouTube">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>n3twork Donation Services</h3>
+                    <p>Supporting innovation through community donations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPrivacyModal()">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showTermsModal()">Terms of Service</a></li>
+                        <li><a href="#" onclick="showSecurityModal()">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 n3twork Donation Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/main.js"></script>
+    <script>
+        // Immediate initialization fallback for file:// mode
+        (function() {
+            setTimeout(function() {
+                if (typeof initializeApp === 'function' && (!window.AppState || !window.AppState.initialized)) {
+                    try {
+                        initializeApp();
+                        if (window.AppState) window.AppState.initialized = true;
+                    } catch (e) {
+                        console.error('Fallback initialization failed:', e);
+                    }
+                }
+            }, 200);
+        })();
+    </script>
+</body>
+</html>
