@@ -415,27 +415,6 @@ const ToolData = {
         }
     },
     obdii: {
-        name: 'ELM327 OBD2 USB Adapter',
-        description: 'Automotive diagnostic tool for vehicle security research and CAN bus analysis.',
-        details: {
-            specifications: [
-                'OBD-II/EOBD compliant',
-                'CAN bus interface',
-                'Real-time data monitoring',
-                'Diagnostic trouble codes',
-                'Vehicle parameter access'
-            ],
-            uses: [
-                'Automotive security research',
-                'CAN bus analysis',
-                'Vehicle diagnostics',
-                'ECU communication testing',
-                'Connected car security'
-            ],
-            priority: 'High Priority - Automotive security focus'
-        }
-    },
-    obdii: {
         name: 'OBD-II Port Connector',
         description: 'Automotive diagnostic tool for vehicle security research and CAN bus analysis.',
         details: {
@@ -454,6 +433,27 @@ const ToolData = {
                 'Connected car security'
             ],
             priority: 'Medium Priority - Automotive security focus'
+        }
+    },
+    obdiii: {
+        name: 'ELM327 OBD2 USB Adapter',
+        description: 'Automotive diagnostic tool for vehicle security research and CAN bus analysis.',
+        details: {
+            specifications: [
+                'OBD-II/EOBD compliant',
+                'CAN bus interface',
+                'Real-time data monitoring',
+                'Diagnostic trouble codes',
+                'Vehicle parameter access'
+            ],
+            uses: [
+                'Automotive security research',
+                'CAN bus analysis',
+                'Vehicle diagnostics',
+                'ECU communication testing',
+                'Connected car security'
+            ],
+            priority: 'High Priority - Automotive security focus'
         }
     },
     alpha: {
